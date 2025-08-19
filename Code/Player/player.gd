@@ -10,9 +10,11 @@ enum shapes { Line, Circle, Square, Triangle }
 
 var draw_distance : float = 2
 
+var line : ImmediateMesh
+
 var currently_drawing : bool = false
 var drawings_mesh : Array[MeshInstance3D] = []
-var drawings_points : Array[Vector3] = []
+var drawings_points = []
 var drawings_shape : Array[shapes]
 
 @onready var LineMat = preload("res://Art/Materials/TestLineMaterial.tres") 
@@ -36,16 +38,20 @@ func _unhandled_input(event: InputEvent) -> void:
 				
 		else:
 			if event.button_index == MOUSE_BUTTON_LEFT:
-				currently_drawing = false
 				print("MouseButtonUp")
+				stop_draw()
 
 ## Creates new MeshInstance3D with parameters, and sets 'currently_drawing' to true
 func start_draw():
+	drawings_points.append([]) # creates a new array in drawings_points
+	
 	currently_drawing = true
+	
 	var line_mesh = MeshInstance3D.new()
-	var line = ImmediateMesh.new()
+	get_tree().current_scene.add_child(line_mesh)
+	line = ImmediateMesh.new()
 	line_mesh.mesh = line
-	line.surface_begin(Mesh.PRIMITIVE_LINE_STRIP, LineMat)
+	
 	
 func stop_draw():
 	currently_drawing = false
@@ -83,13 +89,22 @@ func _physics_process(delta: float) -> void:
 	if currently_drawing:
 		
 		var space_state = get_world_3d().direct_space_state
-		var from = global_position
-		var to = global_position + (-camera.global_transform.basis.z * draw_distance)
+		var from = camera.global_position
+		var to = camera.global_position + (-camera.global_transform.basis.z * draw_distance)
 		var query = PhysicsRayQueryParameters3D.create(from, to)
 		query.collision_mask = (1 << 1)
 		var result = space_state.intersect_ray(query)
 		if result:
-			print("Adding point at " + str(result.position) )
+			#print("Adding point at " + str(result.position) )
 			
+			
+			drawings_points.back().append(result.position)
+			line.clear_surfaces()
+			line.surface_begin(Mesh.PRIMITIVE_LINE_STRIP, LineMat)
+			for x in drawings_points.back():
+				line.surface_add_vertex(x)
+			line.surface_end()
+		else:
+			stop_draw()
 		
 	#endregion
