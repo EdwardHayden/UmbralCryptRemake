@@ -6,6 +6,17 @@ const JUMP_VELOCITY = 4.5
 
 var sensitivity = 0.0015
 
+enum shapes { Line, Circle, Square, Triangle }
+
+var draw_distance : float = 2
+
+var currently_drawing : bool = false
+var drawings_mesh : Array[MeshInstance3D] = []
+var drawings_points : Array[Vector3] = []
+var drawings_shape : Array[shapes]
+
+@onready var LineMat = preload("res://Art/Materials/TestLineMaterial.tres") 
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 
@@ -17,11 +28,36 @@ func _unhandled_input(event: InputEvent) -> void:
 		self.rotate_y(-event.relative.x * sensitivity)
 		camera.rotate_x(-event.relative.y * sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				print("MouseButtonDown")
+				start_draw()
+				
+		else:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				currently_drawing = false
+				print("MouseButtonUp")
+
+## Creates new MeshInstance3D with parameters, and sets 'currently_drawing' to true
+func start_draw():
+	currently_drawing = true
+	var line_mesh = MeshInstance3D.new()
+	var line = ImmediateMesh.new()
+	line_mesh.mesh = line
+	line.surface_begin(Mesh.PRIMITIVE_LINE_STRIP, LineMat)
+	
+func stop_draw():
+	currently_drawing = false
+	# Call Shape Detection Function on most recently drawn line "drawings_points.back()"
+
 
 func _physics_process(delta: float) -> void:
+	#region Escape Quit
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	
+	#endregion
+	#region Movement Handling
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -42,5 +78,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 
 	move_and_slide()
-
-	
+	#endregion
+	#region Drawing
+	if currently_drawing:
+		
+		var space_state = get_world_3d().direct_space_state
+		var from = global_position
+		var to = global_position + (-camera.global_transform.basis.z * draw_distance)
+		var query = PhysicsRayQueryParameters3D.create(from, to)
+		query.collision_mask = (1 << 1)
+		var result = space_state.intersect_ray(query)
+		if result:
+			print("Adding point at " + str(result.position) )
+			
+		
+	#endregion
