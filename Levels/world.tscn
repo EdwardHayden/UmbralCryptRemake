@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cciy403qkiwhi"]
+[gd_scene load_steps=6 format=3 uid="uid://cciy403qkiwhi"]
 
 [ext_resource type="MeshLibrary" uid="uid://drvkb1lokpwmk" path="res://Art/Tileset/Tileset.tres" id="1_0ymdk"]
 [ext_resource type="PackedScene" uid="uid://bkwlr4l50u2vc" path="res://Objects/Player.tscn" id="2_sc4jw"]
-[ext_resource type="Script" path="res://Code/Testing/DrawingTest.gd" id="3_5oco7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gdb7e"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,7 +44,3 @@ environment = SubResource("Environment_k50sc")
 
 [node name="Player" parent="." instance=ExtResource("2_sc4jw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95381, 1.01602, 0.547142)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.33202)
-script = ExtResource("3_5oco7")

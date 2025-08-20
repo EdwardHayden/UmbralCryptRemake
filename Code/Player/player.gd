@@ -10,11 +10,14 @@ enum shapes { Line, Circle, Square, Triangle }
 
 var draw_distance : float = 2
 
+var line_width : float = 0.01
+
 var line : ImmediateMesh
 
 var currently_drawing : bool = false
 var drawings_mesh : Array[MeshInstance3D] = []
 var drawings_points = []
+var drawings_normals = []
 var drawings_shape : Array[shapes]
 
 @onready var LineMat = preload("res://Art/Materials/TestLineMaterial.tres") 
@@ -44,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Creates new MeshInstance3D with parameters, and sets 'currently_drawing' to true
 func start_draw():
 	drawings_points.append([]) # creates a new array in drawings_points
-	
+	drawings_normals.append([])
 	currently_drawing = true
 	
 	var line_mesh = MeshInstance3D.new()
@@ -94,16 +97,20 @@ func _physics_process(delta: float) -> void:
 		var query = PhysicsRayQueryParameters3D.create(from, to)
 		query.collision_mask = (1 << 1)
 		var result = space_state.intersect_ray(query)
-		if result:
-			#print("Adding point at " + str(result.position) )
-			
+		if result:			
 			
 			drawings_points.back().append(result.position)
-			line.clear_surfaces()
-			line.surface_begin(Mesh.PRIMITIVE_LINE_STRIP, LineMat)
-			for x in drawings_points.back():
-				line.surface_add_vertex(x)
-			line.surface_end()
+			drawings_normals.back().append(result.normal)
+
+			var points = drawings_points.back()
+			var normals = drawings_normals.back()
+			if points.size() > 2:
+				line.clear_surfaces()
+				line.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP, LineMat)
+				for x in range(points.size()-1):
+					line.surface_set_normal(normals[x])
+					line.surface_add_vertex(points[x] + (points[x] - points[x+1]).normalized().cross(-normals[x]).normalized() * (line_width - ((x%2) * 2)*line_width) + normals[x]*0.0001)
+				line.surface_end()
 		else:
 			stop_draw()
 		
