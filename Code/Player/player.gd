@@ -6,6 +6,8 @@ const JUMP_VELOCITY = 4.5
 
 var sensitivity = 0.0015
 
+var interact_distance : float = 2
+
 enum shapes { Line, Circle, Square, Triangle }
 
 var draw_distance : float = 2
@@ -26,6 +28,7 @@ var drawings_shape : Array[shapes]
 @onready var camera = $Head/Camera3D
 
 func _ready() -> void:
+	PlayerManager.add_player(0, "Edward")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -44,6 +47,19 @@ func _unhandled_input(event: InputEvent) -> void:
 				print("MouseButtonUp")
 				stop_draw()
 
+func _input(event: InputEvent) -> void:
+	# Input handling for INTERACT action (pressing 'E')
+	if event.is_action_pressed("INTERACT"):
+		# Logic for Raycasting forward
+		var space_state = get_world_3d().direct_space_state
+		var from = camera.global_position
+		var to = camera.global_position + (-camera.global_transform.basis.z * interact_distance)
+		var query = PhysicsRayQueryParameters3D.create(from, to)
+		query.collision_mask = (1 << 2) 
+		var result = space_state.intersect_ray(query)
+		if result:
+			result.collider.owner.on_interact(0)
+	
 ## Creates new MeshInstance3D with parameters, and sets 'currently_drawing' to true
 func start_draw():
 	drawings_points.append([]) # creates a new array in drawings_points
@@ -114,4 +130,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			stop_draw()
 		
+	#endregion
+	#region Player Manager Updates
+	PlayerManager.players[0].position = global_position
 	#endregion
