@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 
 			var points = drawings_points.back()
 			var normals = drawings_normals.back()
-			if points.size() > 2:
+			if points.size() > 3:
 				line.clear_surfaces()
 				line.surface_begin(Mesh.PRIMITIVE_TRIANGLE_STRIP, LineMat)
 				for x in range(points.size()-1):
