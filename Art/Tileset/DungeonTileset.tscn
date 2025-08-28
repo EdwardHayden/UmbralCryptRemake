@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfsskll5eq254"]
+
+[ext_resource type="PackedScene" uid="uid://bnmewe4na7b6c" path="res://Art/Tileset/UmbralCryptTileset.glb" id="1_yel56"]
+
+[node name="UmbralCryptTileset" instance=ExtResource("1_yel56")]

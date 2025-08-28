@@ -2,10 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmipo56tsv2f1"
-path="res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.ctex"
+uid="uid://dac63diobe0gn"
+path.s3tc="res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "c2fa5abeabe423b3a78b823822a6d92e"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
-dest_files=["res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.ctex"]
+dest_files=["res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -27,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
+roughness/src_normal="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
