@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bnmewe4na7b6c"
-path="res://.godot/imported/UmbralCryptTileset.glb-bf946b6a45e6d0312b64508ce72c1caa.scn"
+path="res://.godot/imported/UmbralCryptTileset.glb-eafc6b2139fb0d77302f5e2286fb97aa.scn"
 
 [deps]
 
-source_file="res://Art/Tileset/UmbralCryptTileset.glb"
-dest_files=["res://.godot/imported/UmbralCryptTileset.glb-bf946b6a45e6d0312b64508ce72c1caa.scn"]
+source_file="res://Art/Tileset/StoneWalls/UmbralCryptTileset.glb"
+dest_files=["res://.godot/imported/UmbralCryptTileset.glb-eafc6b2139fb0d77302f5e2286fb97aa.scn"]
 
 [params]
 

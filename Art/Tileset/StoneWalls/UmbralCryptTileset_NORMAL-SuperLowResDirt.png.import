@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq341l4mq21uc"
-path.s3tc="res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResStone.png-a120ba61a2e890ba42eb61ed76f8bd73.s3tc.ctex"
+uid="uid://dac63diobe0gn"
+path.s3tc="res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-29ccba2a60c93325cdc872d36d55d403.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a42a09a75f1c4f2b34641d929d944814"
+"md5": "c2fa5abeabe423b3a78b823822a6d92e"
 }
 
 [deps]
 
-source_file="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResStone.png"
-dest_files=["res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResStone.png-a120ba61a2e890ba42eb61ed76f8bd73.s3tc.ctex"]
+source_file="res://Art/Tileset/StoneWalls/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
+dest_files=["res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-29ccba2a60c93325cdc872d36d55d403.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResStone.png"
+roughness/src_normal="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

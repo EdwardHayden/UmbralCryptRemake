@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dac63diobe0gn"
-path.s3tc="res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.s3tc.ctex"
+uid="uid://bm3xoxqhfct5v"
+path.s3tc="res://.godot/imported/BeamsTileset_NORMAL-SuperLowResWoodPlank.png-009a352daf46f6180066f355bb374b65.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c2fa5abeabe423b3a78b823822a6d92e"
+"md5": "636106dcd9081eae490a55e58fa6092b"
 }
 
 [deps]
 
-source_file="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
-dest_files=["res://.godot/imported/UmbralCryptTileset_NORMAL-SuperLowResDirt.png-5c6eccf36dbbbf21283516869119994f.s3tc.ctex"]
+source_file="res://Art/Tileset/WoodBeams/BeamsTileset_NORMAL-SuperLowResWoodPlank.png"
+dest_files=["res://.godot/imported/BeamsTileset_NORMAL-SuperLowResWoodPlank.png-009a352daf46f6180066f355bb374b65.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Art/Tileset/UmbralCryptTileset_NORMAL-SuperLowResDirt.png"
+roughness/src_normal="res://Art/Tileset/WoodBeams/BeamsTileset_NORMAL-SuperLowResWoodPlank.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

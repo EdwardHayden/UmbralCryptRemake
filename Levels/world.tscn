@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cciy403qkiwhi"]
+[gd_scene load_steps=8 format=3 uid="uid://cciy403qkiwhi"]
 
-[ext_resource type="MeshLibrary" uid="uid://bhqh6eti0v4nb" path="res://Art/Tileset/DungeonTileset.tres" id="2_qemfi"]
+[ext_resource type="MeshLibrary" uid="uid://bhqh6eti0v4nb" path="res://Art/Tileset/StoneWalls/DungeonTileset.tres" id="2_qemfi"]
 [ext_resource type="PackedScene" uid="uid://bkwlr4l50u2vc" path="res://Objects/Player/Player.tscn" id="2_sc4jw"]
 [ext_resource type="PackedScene" uid="uid://cd4txh7dsw4yv" path="res://Objects/Environment/Dungeon/Door.tscn" id="3_n3gpf"]
+[ext_resource type="MeshLibrary" uid="uid://bybe462xq0rr6" path="res://Art/Tileset/WoodBeams/WoodBeams.tres" id="3_r7lfw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gdb7e"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,13 +38,21 @@ environment = SubResource("Environment_k50sc")
 [node name="Player" parent="." instance=ExtResource("2_sc4jw")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1, 0)
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="StoneWalls" type="GridMap" parent="."]
 mesh_library = ExtResource("2_qemfi")
 cell_center_y = false
 collision_layer = 3
 data = {
 "cells": PackedInt32Array(0, 0, 1441796, 65535, 0, 1441796, 65535, 65535, 1441796, 0, 65535, 1441796, 1, 0, 1441796, 1, 65535, 1441796, 1, 1, 1441796, 0, 1, 1441796, 65535, 1, 1441796, 65534, 65534, 1441794, 65534, 2, 2, 2, 2, 1048578, 2, 65534, 655362, 65534, 1, 3, 65534, 65535, 1441795, 65535, 2, 3, 1, 2, 1048579, 2, 1, 1048579, 2, 65535, 655363, 1, 65534, 655363, 65535, 65534, 1441795, 65534, 0, 1441796, 0, 65534, 1441796, 2, 0, 1441796, 0, 2, 1441796, 65535, 3, 2, 1, 3, 1048578, 0, 3, 1048576, 3, 1, 1, 4, 1, 1, 5, 1, 1, 3, 65535, 655361, 4, 65535, 655361, 5, 65535, 655361, 3, 0, 655364, 4, 0, 655364, 5, 0, 655364, 6, 1, 1048578, 6, 65535, 655362, 6, 0, 655360, 1, 65533, 1048577, 1, 65531, 1048577, 1, 65532, 655360, 65535, 65532, 0, 65535, 65533, 1441793, 65535, 65531, 1441793, 0, 65530, 655361, 1, 65530, 655362, 65535, 65530, 1441794, 0, 65531, 1441796, 0, 65532, 1441796, 0, 65533, 1441796, 65533, 0, 1441796, 65533, 65535, 655361, 65532, 65535, 655363, 65532, 65534, 1048577, 65532, 65533, 655362, 65531, 65533, 1441794, 65531, 65534, 1441793, 65531, 65535, 1441793, 65531, 0, 1441793, 65533, 1, 1, 65532, 1, 1, 65532, 0, 4, 65531, 1, 2, 0, 4, 1441792, 65535, 4, 1441794, 1, 4, 655362, 1, 5, 1048578, 65535, 5, 2, 0, 5, 1, 7, 1, 1441793, 7, 65535, 1441793, 7, 0, 0, 7, 2, 1441793, 7, 65534, 1441793, 7, 65533, 1441794, 7, 3, 2, 8, 3, 1, 8, 65533, 655361, 9, 65533, 655362, 9, 3, 1048578, 8, 2, 1048580, 8, 1, 1048580, 8, 0, 1048580, 8, 65535, 1048580, 8, 65534, 1048580, 9, 2, 1048577, 9, 1, 1048577, 9, 0, 1048577, 9, 65535, 1048577, 9, 65534, 1048577)
 }
+
+[node name="WoodBeams" type="GridMap" parent="."]
+mesh_library = ExtResource("3_r7lfw")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 3, 0, 65534, 3, 1, 1, 4, 1048577, 0, 3, 0, 1, 3, 1048578, 2, 2, 1048578, 2, 3, 1048577, 3, 1, 0, 4, 1, 0, 4, 65535, 655360, 7, 65535, 655361, 6, 2, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Doorway2" parent="." instance=ExtResource("3_n3gpf")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.552804, -1.19209e-07, 8.00186)

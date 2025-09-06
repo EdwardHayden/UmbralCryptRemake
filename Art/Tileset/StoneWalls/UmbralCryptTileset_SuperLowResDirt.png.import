@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbxjoeiav3oa"
-path.s3tc="res://.godot/imported/UmbralCryptTileset_SuperLowResDirt.png-63981334403d87802c94d7e60a3bb0fd.s3tc.ctex"
+path.s3tc="res://.godot/imported/UmbralCryptTileset_SuperLowResDirt.png-d80c7964d11d0e4c3037ca8053e18dd8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Art/Tileset/UmbralCryptTileset_SuperLowResDirt.png"
-dest_files=["res://.godot/imported/UmbralCryptTileset_SuperLowResDirt.png-63981334403d87802c94d7e60a3bb0fd.s3tc.ctex"]
+source_file="res://Art/Tileset/StoneWalls/UmbralCryptTileset_SuperLowResDirt.png"
+dest_files=["res://.godot/imported/UmbralCryptTileset_SuperLowResDirt.png-d80c7964d11d0e4c3037ca8053e18dd8.s3tc.ctex"]
 
 [params]
 
