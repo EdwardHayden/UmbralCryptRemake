@@ -27,3 +27,8 @@ light_color = Color(1, 0.913725, 0.788235, 1)
 light_energy = 1.5
 spot_range = 8.0
 spot_angle = 50.0
+
+[node name="ShapeDebug" type="CanvasLayer" parent="."]
+
+[node name="Line2D" type="Line2D" parent="ShapeDebug"]
+width = 1.0

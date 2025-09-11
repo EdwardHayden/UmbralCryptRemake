@@ -75,7 +75,100 @@ func start_draw():
 func stop_draw():
 	currently_drawing = false
 	# Call Shape Detection Function on most recently drawn line "drawings_points.back()"
+	shape_detection(drawings_points.back())
+	
 
+func flatten(A):
+	var min_x: float = INF
+	var max_x: float = 0
+	var min_y: float = INF
+	var max_y: float = 0
+	var min_z: float = INF
+	var max_z: float = 0
+	for i in range(0, len(A)):
+		if A[i].x < min_x:
+			min_x = A[i].x
+		if A[i].x > max_x:
+			max_x = A[i].x
+		if A[i].y < min_y:
+			min_y = A[i].y
+		if A[i].y > max_y:
+			max_y = A[i].y
+		if A[i].z < min_z:
+			min_z = A[i].z
+		if A[i].z > max_z:
+			max_z = A[i].z
+	var x_deviance = max_x-min_x
+	var y_deviance = max_y-min_y
+	var z_deviance = max_z-min_z
+	var flattened_points = []
+	if x_deviance < y_deviance && x_deviance < z_deviance:
+		for i in range(0, len(A)):
+			flattened_points.append(Vector2(A[i].y, A[i].z))
+	if y_deviance < x_deviance && y_deviance < z_deviance:
+		for i in range(0, len(A)):
+			flattened_points.append(Vector2(A[i].x, A[i].z))
+	if z_deviance < x_deviance && z_deviance < y_deviance:
+		for i in range(0, len(A)):
+			flattened_points.append(Vector2(A[i].x, A[i].y))
+	return flattened_points
+	
+
+func scale_to_square(A, size):
+	var min_x: float = INF
+	var max_x: float = 0
+	var min_y: float = INF
+	var max_y: float = 0
+	
+	for i in range(0, len(A)):
+		if A[i].x < min_x:
+			min_x = A[i].x
+		if A[i].x > max_x:
+			max_x = A[i].x
+		if A[i].y < min_y:
+			min_y = A[i].y
+		if A[i].y > max_y:
+			max_y = A[i].y
+		
+	var x_deviance = max_x-min_x
+	var y_deviance = max_y-min_y
+	
+	var new_points = []
+	for i in range(0, len(A)):
+		new_points.append(Vector2(A[i].x * (size/x_deviance), A[i].y * (size/y_deviance)))
+	return new_points
+
+func centroid(A):
+	var sum = Vector2(0, 0)
+	for i in range(0, len(A)):
+		A[i] = A[i]*100
+		sum += A[i]
+	return sum/len(A)
+
+func translate_to_origin(A):
+	var c = centroid(A)
+	c = Vector2(c.x-320, c.y-160) # <-- centres in the middle of the screen for debug
+	var new_points = []
+	for i in range(0, len(A)):
+		
+		new_points.append(Vector2(A[i].x - c.x, A[i].y - c.y))
+		
+	
+	return new_points
+	
+func shape_debug(points):
+	$ShapeDebug/Line2D.points = points
+
+func shape_detection(query_points):
+	shape_debug(translate_to_origin(flatten(query_points)))
+
+func resample(points, n):
+	pass
+
+func path_length(A):
+	var d : float = 0
+	for i in range(1, len(A)):
+		pass
 
 func _physics_process(delta: float) -> void:
 	#region Escape Quit
