@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceiu8llguj7rb"]
+
+[ext_resource type="PackedScene" uid="uid://c82an6nyi7hy" path="res://Art/NewPlaceholderModels/DungeonTiles.glb" id="1_m4rvp"]
+
+[node name="DungeonTiles" instance=ExtResource("1_m4rvp")]
