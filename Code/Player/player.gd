@@ -114,6 +114,12 @@ func flatten(A):
 	return flattened_points
 	
 
+func flatten_alt(A):
+	for i in range(0, len(A)):
+		pass
+	
+	
+	
 func scale_to_square(A, size):
 	var min_x: float = INF
 	var max_x: float = 0
