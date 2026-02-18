@@ -55,6 +55,10 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="Doorway3" parent="." instance=ExtResource("3_n3gpf")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 0.775, 0, -8.742278e-08, 0, -1, -17.997986, -0.03614819, 32.576065)
+skeleton = NodePath("../Doorway2")
+
 [node name="Doorway2" parent="." instance=ExtResource("3_n3gpf")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.552804, -1.19209e-07, 8.00186)
 
